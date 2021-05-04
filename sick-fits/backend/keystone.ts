@@ -1,5 +1,6 @@
 import 'dotenv/config';
 import { createSchema, config } from '@keystone-next/keystone/schema';
+import { User } from './schemas/User';
 
 const databaseURL = process.env.DATABASE_URL;
 
@@ -22,6 +23,7 @@ export default config({
   },
   lists: createSchema({
     //   schema items go in here
+    User,
   }),
   ui: {
     //   TODO: change this for roles
