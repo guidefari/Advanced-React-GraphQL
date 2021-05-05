@@ -5,7 +5,7 @@ import {
   withItemData,
   statelessSessions,
 } from '@keystone-next/keystone/session';
-import { User } from './schemas/User';
+import { User, Product, ProductImage } from './schemas';
 
 const databaseURL = process.env.DATABASE_URL;
 
@@ -40,10 +40,13 @@ export default withAuth(
     lists: createSchema({
       //   schema items go in here
       User,
+      Product,
+      ProductImage,
     }),
     ui: {
       // show the UI only for people who will pass this test
       isAccessAllowed: ({ session }) => !!session?.data,
+      //   that !! is to coerce the return data to boolean
     },
     session: withItemData(statelessSessions(sessionConfig), {
       // GraphQL query
