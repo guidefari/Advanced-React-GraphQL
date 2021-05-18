@@ -1,8 +1,13 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function useForm(initial = {}) {
   // create a state object for our inputs
   const [inputs, setInputs] = useState(initial);
+  const initialValues = Object.values(initial);
+
+  useEffect(() => {
+    setInputs(initial);
+  }, [initialValues]);
 
   // {
   //     name: 'Guide',
