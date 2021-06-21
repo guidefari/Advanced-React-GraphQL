@@ -11,7 +11,7 @@ import { insertSeedData } from './seed-data';
 const databaseURL = process.env.DATABASE_URL;
 
 const sessionConfig = {
-  maxAge: 60 * 60 * 24 * 360, // how long should the stay signed in?
+  maxAge: 60 * 60 * 24 * 360, // how long should the user stay signed in?
   secret: process.env.COOKIE_SECRET,
 };
 
