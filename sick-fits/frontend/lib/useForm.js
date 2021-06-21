@@ -1,18 +1,19 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function useForm(initial = {}) {
   // create a state object for our inputs
   const [inputs, setInputs] = useState(initial);
-  const initialValues = Object.values(initial);
+  const initialValues = Object.values(initial).join('');
 
   useEffect(() => {
+    // This function runs when the things we are watching change
     setInputs(initial);
   }, [initialValues]);
 
   // {
-  //     name: 'Guide',
-  //     description: 'nascar',
-  //     price: '1020'
+  //   name: 'wes',
+  //   description: 'nice shoes',
+  //   price: 1000
   // }
 
   function handleChange(e) {
@@ -33,6 +34,7 @@ export default function useForm(initial = {}) {
   function resetForm() {
     setInputs(initial);
   }
+
   function clearForm() {
     const blankState = Object.fromEntries(
       Object.entries(inputs).map(([key, value]) => [key, ''])
@@ -40,7 +42,7 @@ export default function useForm(initial = {}) {
     setInputs(blankState);
   }
 
-  //  return the things we wanna surface from this custom hook
+  // return the things we want to surface from this custom hook
   return {
     inputs,
     handleChange,
