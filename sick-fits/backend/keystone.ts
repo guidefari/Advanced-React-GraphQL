@@ -7,6 +7,7 @@ import {
 } from '@keystone-next/keystone/session';
 import { User, Product, ProductImage } from './schemas';
 import { insertSeedData } from './seed-data';
+import { sendPasswordResetEmail } from './lib/mail';
 
 const databaseURL = process.env.DATABASE_URL;
 
@@ -25,7 +26,8 @@ const { withAuth } = createAuth({
   },
   passwordResetLink: {
     async sendToken(args) {
-      console.log(args);
+      // send the email
+      await sendPasswordResetEmail(args.token, args.identity);
     },
   },
 });
