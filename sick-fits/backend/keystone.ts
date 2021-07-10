@@ -8,6 +8,7 @@ import {
 import { User, Product, ProductImage, CartItem } from './schemas';
 import { insertSeedData } from './seed-data';
 import { sendPasswordResetEmail } from './lib/mail';
+import { extendGraphqlSchema } from './mutations';
 
 const databaseURL = process.env.DATABASE_URL;
 
@@ -57,6 +58,7 @@ export default withAuth(
       ProductImage,
       CartItem,
     }),
+    extendGraphqlSchema,
     ui: {
       // show the UI only for people who will pass this test
       isAccessAllowed: ({ session }) => !!session?.data,
