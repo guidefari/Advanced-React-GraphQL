@@ -26,6 +26,11 @@ const ItemStyles = styled.div`
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     grid-gap: 1px;
     background: var(--lightGray);
+
+    button {
+      cursor: pointer;
+    }
+
     & > * {
       background: white;
       border: 0;
