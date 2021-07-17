@@ -4,3 +4,4 @@ export * from './CartItem';
 export * from './ProductImage';
 export * from './Order';
 export * from './OrderItem';
+export * from './Role';
