@@ -59,7 +59,10 @@ export default function OrdersPage() {
             <Link href={`/order/${order.id}`}>
               <a>
                 <div className="order-meta">
-                  <p>{countItemsInAnOrder(order)} Items</p>
+                  <p>
+                    {countItemsInAnOrder(order)} Item
+                    {countItemsInAnOrder(order) > 1 ? 's' : ''}
+                  </p>
                   <p>
                     {order.items.length} Product
                     {order.items.length === 1 ? '' : 's'}
