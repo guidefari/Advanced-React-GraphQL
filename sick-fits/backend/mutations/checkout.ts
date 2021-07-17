@@ -82,7 +82,7 @@ export default async function checkout(root: any,{ token }: Arguments ,context: 
   })
 //   6. clean up any old cart item
 const cartItemIds = cartItems.map(cartItem => cartItem.id)
-await context.lists.cartItem.deleteMany({
+await context.lists.CartItem.deleteMany({
     ids: cartItemIds
 })
 return order
