@@ -26,7 +26,6 @@ export const permissions = {
 // rule based functions
 // rules can return a boolean - yes or no - or a filter which limits which products they can CRUD.
 
-// TODO - find out how one would type this whole block
 export const rules = {
   canManageProducts({ session }: ListAccessArgs) {
     if (!isSignedIn({ session })) {
