@@ -72,4 +72,15 @@ export const rules = {
     // 2. If not, does the order belong to them
     return { order: { user: { id: session.itemId } } };
   },
+  canManageUsers({ session }: ListAccessArgs) {
+    if (!isSignedIn({ session })) {
+      return false;
+    }
+    // 1. Do they have the permission to manage the users
+    if (permissions.canManageUsers({ session })) {
+      return true;
+    }
+    // 2. Otherwise they may only update themselves
+    return { id: session.itemId };
+  },
 };
