@@ -24,3 +24,24 @@ export const permissions = {
 };
 
 // rule based functions
+// rules can return a boolean - yes or no - or a filter which limits which products they can CRUD.
+
+// TODO - find out how one would type this whole block
+export const rules = {
+  canManageProducts({ session }: ListAccessArgs) {
+    // 1. Do they have the permission of canManageProducts
+    if (permissions.canManageProducts({ session })) {
+      return true;
+    }
+    // 2. If not, do they own this item?
+    return { user: { id: session.itemId } };
+  },
+  canReadProducts({ session }: ListAccessArgs) {
+    if (permissions.canManageProducts({ session })) {
+      return true; // They can read everything!
+    }
+    // They should only see available products (based on the status field)
+    // this object below will bind with the graphql api and act as a 'where' clause
+    return { status: 'AVAILABLE' };
+  },
+};
