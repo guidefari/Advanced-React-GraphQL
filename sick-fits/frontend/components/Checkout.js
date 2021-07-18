@@ -96,6 +96,7 @@ function CheckoutForm() {
       {error && <p style={{ fontSize: 12 }}>{error.message}</p>}
       {graphQLError && <p style={{ fontSize: 12 }}>{graphQLError.message}</p>}
       <CardElement />
+      {/* TODO: Add a debounce to this button, I double clicked, and two orders went through to the backend, & the card was charged twice */}
       <SickButton>Check Out Now</SickButton>
     </CheckoutFormStyles>
   );
